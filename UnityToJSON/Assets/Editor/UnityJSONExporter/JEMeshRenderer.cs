@@ -52,7 +52,7 @@ public class JEMeshRenderer : JEComponent
         json.castShadows = unityMeshRenderer.castShadows;
         json.receiveShadows = unityMeshRenderer.receiveShadows;
         json.lightmapIndex = unityMeshRenderer.lightmapIndex;
-        json.lightmapTilingOffset = unityMeshRenderer.lightmapTilingOffset;
+        json.lightmapTilingOffset = unityMeshRenderer.lightmapScaleOffset;
         json.materials = new string[Materials.Count];
         for (int i = 0; i < Materials.Count; i++)
         {

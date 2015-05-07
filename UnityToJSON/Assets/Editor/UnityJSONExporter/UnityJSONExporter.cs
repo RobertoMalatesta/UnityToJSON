@@ -47,7 +47,7 @@ public class UnityJSONExporter : ScriptableObject
 
     }
 
-    [MenuItem ("JSONExporter/Export to JSON")]
+    [MenuItem ("UnityToJSON/Export to JSON")]
     public static void DoExport()
     {
 
