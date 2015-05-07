@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -79,7 +82,7 @@ public class JSONGameObject
         foreach(var component in components)
             if (component.GetType() == typeof(T))
                 return (T) component;
-                
+
         return null;
     }
 
@@ -166,7 +169,7 @@ public class JSONKeyframe
 
 public class JSONAnimationNode
 {
-    public string name;   
+    public string name;
     public JSONKeyframe[] keyframes;
 }
 
@@ -220,7 +223,7 @@ public class JSONResources
                 return material;
 
         return null;
-    }    
+    }
 
     public JSONMesh GetMesh(string name)
     {
@@ -240,7 +243,7 @@ public class JSONScene
 }
 
 public class BasicTypeConverter : JsonConverter
- { 
+ {
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
         if (value != null)
@@ -252,7 +255,7 @@ public class BasicTypeConverter : JsonConverter
                 writer.WriteValue(color.r);
                 writer.WriteValue(color.g);
                 writer.WriteValue(color.b);
-                writer.WriteValue(color.a);            
+                writer.WriteValue(color.a);
                 writer.WriteEndArray();
             }
             else if (value.GetType() == typeof(Vector2))
@@ -309,7 +312,7 @@ public class BasicTypeConverter : JsonConverter
 
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-        return null;        
+        return null;
     }
 
     public override bool CanRead
@@ -322,7 +325,6 @@ public class BasicTypeConverter : JsonConverter
         Type[] types = new Type[]{typeof(Color), typeof(Vector2), typeof(Vector3), typeof(Vector4), typeof(Quaternion), typeof(Matrix4x4)};
         return Array.IndexOf(types, objectType) != -1;
     }
-}    
-
 }
 
+}

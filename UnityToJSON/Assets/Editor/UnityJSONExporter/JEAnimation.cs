@@ -1,4 +1,5 @@
-
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 
 using System;
@@ -38,7 +39,7 @@ public class JEAnimation : JEComponent
     	// for now copy the keys, we could evaluate and maybe should
     	// as Unity keys have in/out tangents
 
-        unityAnim = unityComponent as JSONAnimationHelper;    
+        unityAnim = unityComponent as JSONAnimationHelper;
 
         // no way to get clips like this, going to need a custom component
         // for now, support one animation
@@ -70,11 +71,11 @@ public class JEAnimation : JEComponent
         	AnimationClipCurveData cd = curveData[i];
 
         	List<AnimationClipCurveData> nodedata;
-        	
+
         	if (!animdata.TryGetValue(cd.path, out nodedata))
         		nodedata = animdata[cd.path] = new List<AnimationClipCurveData>();
 
-			nodedata.Add(cd);        		
+			nodedata.Add(cd);
         }
 
         foreach(KeyValuePair<string, List<AnimationClipCurveData>> entry in animdata)
@@ -154,7 +155,7 @@ public class JEAnimation : JEComponent
 	        			rot.w = value;
 	        		}
 	        		else
-	        			Debug.Log("Unknown Animtation: " + cd.propertyName);	        		
+	        			Debug.Log("Unknown Animtation: " + cd.propertyName);
 
 		        }
 
@@ -216,7 +217,7 @@ public class JEAnimation : JEComponent
 
     new public static void Reset()
     {
-        
+
     }
 
     public override JSONComponent ToJSON()
@@ -231,7 +232,7 @@ public class JEAnimation : JEComponent
     		JEAnimationClip clip = clips[i];
 
     		var jclip = json.clips[i] = new JSONAnimationClip();
-    		
+
     		jclip.name = clip.name;
 
     		JSONAnimationNode[] jnodes = jclip.nodes = new JSONAnimationNode[clip.keyframes.Count];
@@ -259,7 +260,7 @@ public class JEAnimation : JEComponent
 
 				jnodes[count++] = node;
 
-			}    		
+			}
 
     	}
 

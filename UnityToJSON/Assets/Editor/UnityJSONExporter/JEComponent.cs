@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,15 +28,15 @@ public class JEComponent : JEObject
     {
 
     }
-    
+
     virtual public void PostProcess()
     {
 
-    }    
+    }
 
     public virtual new JSONComponent ToJSON()
     {
-        throw new NotImplementedException("Attempting to call JEComponent ToJSON (override method)");        
+        throw new NotImplementedException("Attempting to call JEComponent ToJSON (override method)");
     }
 
     public static void Reset()
@@ -51,19 +54,19 @@ public class JEComponent : JEObject
             Component[] components = jgo.unityGameObject.GetComponents(pair.Key);
 
             foreach (Component component in components)
-            {                                    
+            {
 
                 MeshRenderer meshRenderer = component as MeshRenderer;
                 if (meshRenderer != null && !meshRenderer.enabled)
                     continue;
 
                 var jcomponent = Activator.CreateInstance(pair.Value) as JEComponent;
-                
+
                 if (jcomponent == null)
                 {
                     ExportError.FatalError("Export component creation failed");
                 }
-                
+
                 jcomponent.unityComponent = component;
                 jcomponent.jeGameObject = jgo;
                 jgo.AddComponent(jcomponent);
@@ -92,7 +95,7 @@ public class JEComponent : JEObject
         RegisterConversion(typeof(Light), typeof(JELight));
         RegisterConversion(typeof(TimeOfDay), typeof(JETimeOfDay));
     }
-    
+
     static Dictionary<Type, Type> conversions;
 
 }

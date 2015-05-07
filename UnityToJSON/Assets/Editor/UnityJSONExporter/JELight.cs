@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -13,17 +15,17 @@ public class JELight : JEComponent
 
     override public void Preprocess()
     {
-        unityLight = unityComponent as Light;        
+        unityLight = unityComponent as Light;
     }
 
     override public void QueryResources()
     {
 
-    }    
+    }
 
     new public static void Reset()
     {
-        
+
     }
 
     public override JSONComponent ToJSON()
@@ -37,7 +39,7 @@ public class JELight : JEComponent
         json.castsShadows = unityLight.shadows != LightShadows.None;
         json.realtime = true;
 
-        SerializedObject serial = new SerializedObject(unityLight); 
+        SerializedObject serial = new SerializedObject(unityLight);
         SerializedProperty lightmapProp = serial.FindProperty("m_Lightmapping");
         if (lightmapProp.intValue != 0)
         {
@@ -49,7 +51,7 @@ public class JELight : JEComponent
         return json;
     }
 
-    Light unityLight;    
+    Light unityLight;
 }
 
 }

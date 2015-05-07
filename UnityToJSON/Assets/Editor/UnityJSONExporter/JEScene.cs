@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
+
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -31,7 +34,7 @@ public class JEScene : JEObject
 
         if (root.Count == 0)
         {
-            ExportError.FatalError("Cannot Export Empty Scene");            
+            ExportError.FatalError("Cannot Export Empty Scene");
         }
 
         // traverse the "root" game objects, collecting child game objects and components
@@ -41,7 +44,7 @@ public class JEScene : JEObject
         }
 
         return scene;
-    }    
+    }
 
     public void Preprocess()
     {
@@ -58,23 +61,23 @@ public class JEScene : JEObject
 
     public void Process()
     {
-        JEResource.Process();        
+        JEResource.Process();
 
         foreach(var jgo in rootGameObjects)
-            jgo.Process();        
+            jgo.Process();
     }
 
     public void PostProcess()
     {
-        JEResource.PostProcess();     
+        JEResource.PostProcess();
 
         foreach(var jgo in rootGameObjects)
-            jgo.PostProcess();                
+            jgo.PostProcess();
     }
 
     public static void Reset()
     {
-        
+
     }
 
     List<JEGameObject> rootGameObjects = new List<JEGameObject>();
@@ -88,7 +91,7 @@ public class JEScene : JEObject
             Traverse(child.gameObject, jgo);
         }
 
-        return jgo;        
+        return jgo;
     }
 
     public new JSONScene ToJSON()
@@ -98,7 +101,7 @@ public class JEScene : JEObject
         json.name = sceneName;
 
         json.resources = JEResource.GenerateJSONResources();
-        
+
         json.hierarchy = new List<JSONGameObject>();
         foreach (var go in rootGameObjects)
             json.hierarchy.Add(go.ToJSON());

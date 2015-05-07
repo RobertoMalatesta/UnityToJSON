@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
+
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -16,27 +19,27 @@ public class JEShader : JEResource
         allShaders[shader] = this;
     }
 
-    public static JEShader RegisterShader(Shader shader) 
+    public static JEShader RegisterShader(Shader shader)
     {
         if (allShaders.ContainsKey(shader))
             return allShaders[shader];
-        
+
         return new JEShader(shader);
     }
 
     void preprocess()
     {
-        //Debug.Log("preprocess - " + unityShader);        
-    }   
+        //Debug.Log("preprocess - " + unityShader);
+    }
 
     void process()
     {
-        //Debug.Log("process - " + unityShader);        
+        //Debug.Log("process - " + unityShader);
     }
 
     void postprocess()
     {
-        //Debug.Log("postprocess - " + unityShader);        
+        //Debug.Log("postprocess - " + unityShader);
     }
 
     new public static void Preprocess()
@@ -60,19 +63,19 @@ public class JEShader : JEResource
         foreach (var shader in allShaders.Values)
         {
             shader.postprocess();
-        }    
+        }
     }
 
     new public static void Reset()
     {
-        allShaders = new Dictionary<Shader, JEShader >();        
+        allShaders = new Dictionary<Shader, JEShader >();
     }
 
     public new JSONShader ToJSON()
     {
         var json = new JSONShader();
 
-        json.name = name;    
+        json.name = name;
         json.renderQueue = unityShader.renderQueue;
 
         return json;

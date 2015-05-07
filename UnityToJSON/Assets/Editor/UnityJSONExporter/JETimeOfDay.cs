@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -13,16 +15,16 @@ public class JETimeOfDay : JEComponent
 
     override public void Preprocess()
     {
-        unityTimeOfDay = unityComponent as TimeOfDay;        
+        unityTimeOfDay = unityComponent as TimeOfDay;
     }
 
     override public void QueryResources()
     {
-    }    
+    }
 
     new public static void Reset()
     {
-        
+
     }
 
     public override JSONComponent ToJSON()
@@ -36,7 +38,7 @@ public class JETimeOfDay : JEComponent
         return json;
     }
 
-    TimeOfDay unityTimeOfDay;    
+    TimeOfDay unityTimeOfDay;
 }
 
 }

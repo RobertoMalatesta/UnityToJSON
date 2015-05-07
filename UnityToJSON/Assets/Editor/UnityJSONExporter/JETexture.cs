@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
+
 using System;
 using System.IO;
 using System.IO.Compression;
@@ -21,19 +24,19 @@ public class JETexture : JEResource
 
     void preprocess()
     {
-        //Debug.Log("preprocess - " + unityTexture);        
-    }   
+        //Debug.Log("preprocess - " + unityTexture);
+    }
 
     void process()
     {
-        //Debug.Log("process - " + unityTexture);  
+        //Debug.Log("process - " + unityTexture);
 
         name = unityTexture.name;
 
         string path = AssetDatabase.GetAssetPath(unityTexture);
 
         TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
-        
+
         if (textureImporter.isReadable == false)
         {
             textureImporter.isReadable = true;
@@ -45,27 +48,27 @@ public class JETexture : JEResource
         ntexture.Apply();
 
 
-        var bytes = ntexture.EncodeToPNG();         
+        var bytes = ntexture.EncodeToPNG();
 
-        base64PNGLength = bytes.Length;   
+        base64PNGLength = bytes.Length;
         base64PNG =  System.Convert.ToBase64String(bytes, 0, bytes.Length);
 
 
-        UnityEngine.Object.DestroyImmediate(ntexture);  
+        UnityEngine.Object.DestroyImmediate(ntexture);
 
     }
 
     void postprocess()
     {
-        //Debug.Log("postprocess - " + unityTexture);        
+        //Debug.Log("postprocess - " + unityTexture);
     }
-    
 
-    public static JETexture RegisterTexture(Texture texture) 
+
+    public static JETexture RegisterTexture(Texture texture)
     {
         if (allTextures.ContainsKey(texture))
             return allTextures[texture];
-        
+
         return new JETexture(texture);
     }
 
@@ -84,7 +87,7 @@ public class JETexture : JEResource
         {
             texture.process();
         }
- 
+
     }
 
     new public static void PostProcess()
@@ -98,7 +101,7 @@ public class JETexture : JEResource
     new public static void Reset()
     {
         allTextures = new Dictionary<Texture, JETexture >();
-    }    
+    }
 
     public new JSONTexture ToJSON()
     {
@@ -120,7 +123,7 @@ public class JETexture : JEResource
 
         return textures;
     }
-    
+
     Texture2D unityTexture;
 
     public string name;

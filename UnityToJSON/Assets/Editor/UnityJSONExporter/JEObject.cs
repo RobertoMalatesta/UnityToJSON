@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
+
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -14,7 +17,7 @@ public class JEObject
 
     public object ToJSON()
     {
-        throw new NotImplementedException("Attempting to call JEObject ToJSON (override method)");        
+        throw new NotImplementedException("Attempting to call JEObject ToJSON (override method)");
     }
 
 }

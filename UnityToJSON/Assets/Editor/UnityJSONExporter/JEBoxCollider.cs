@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -13,16 +15,16 @@ public class JEBoxCollider : JEComponent
 
     override public void Preprocess()
     {
-        unityBoxCollider = unityComponent as BoxCollider;        
+        unityBoxCollider = unityComponent as BoxCollider;
     }
 
     override public void QueryResources()
     {
-    }    
+    }
 
     new public static void Reset()
     {
-        
+
     }
 
     public override JSONComponent ToJSON()
@@ -37,7 +39,7 @@ public class JEBoxCollider : JEComponent
         return json;
     }
 
-    BoxCollider unityBoxCollider;    
+    BoxCollider unityBoxCollider;
 }
 
 }

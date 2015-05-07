@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -13,16 +15,16 @@ public class JERigidBody : JEComponent
 
     override public void Preprocess()
     {
-        unityRigidBody = unityComponent as Rigidbody;        
+        unityRigidBody = unityComponent as Rigidbody;
     }
 
     override public void QueryResources()
     {
-    }    
+    }
 
     new public static void Reset()
     {
-        
+
     }
 
     public override JSONComponent ToJSON()
@@ -33,7 +35,7 @@ public class JERigidBody : JEComponent
         return json;
     }
 
-    Rigidbody unityRigidBody;    
+    Rigidbody unityRigidBody;
 }
 
 }

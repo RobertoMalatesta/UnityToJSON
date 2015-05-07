@@ -1,4 +1,5 @@
-
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System;
 using System.IO;
@@ -14,8 +15,8 @@ public class JELightmap : JEResource
 {
     void preprocess()
     {
-        
-    }   
+
+    }
 
     void process()
     {
@@ -45,7 +46,7 @@ public class JELightmap : JEResource
 
             TextureImporterSettings settings = new TextureImporterSettings();
             textureImporter.ReadTextureSettings(settings);
-            
+
             bool setReadable = false;
             if (!settings.readable)
                 setReadable = true;
@@ -64,7 +65,7 @@ public class JELightmap : JEResource
 
             var bytes = ntexture.EncodeToPNG();
 
-            UnityEngine.Object.DestroyImmediate(ntexture);  
+            UnityEngine.Object.DestroyImmediate(ntexture);
 
             if (setReadable)
                 settings.readable = false;
@@ -72,16 +73,16 @@ public class JELightmap : JEResource
             settings.lightmap = true;
             textureImporter.SetTextureSettings(settings);
             AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
-            
+
             JELightmap lm = new JELightmap();
 
             lm.filename = JEScene.sceneName + "_Lightmap_" + i;
-            lm.base64PNGLength = bytes.Length;   
+            lm.base64PNGLength = bytes.Length;
             lm.base64PNG =  System.Convert.ToBase64String(bytes, 0, bytes.Length);
 
             allLightmaps.Add(lm);
 
-            
+
 
         }
 
@@ -93,11 +94,11 @@ public class JELightmap : JEResource
 
     new public static void PostProcess()
     {
-    }    
+    }
 
     new public static void Reset()
     {
-        allLightmaps = new List<JELightmap>();        
+        allLightmaps = new List<JELightmap>();
     }
 
     public new JSONLightmap ToJSON()
@@ -110,19 +111,19 @@ public class JELightmap : JEResource
         List<JSONLightmap> lightmaps = new List<JSONLightmap>();
 
         for (int i = 0; i < allLightmaps.Count; i++)
-        {           
-            JELightmap lightmap = allLightmaps[i]; 
+        {
+            JELightmap lightmap = allLightmaps[i];
             JSONLightmap jlightmap = new JSONLightmap();
 
             jlightmap.filename = lightmap.filename;
             jlightmap.base64PNG = lightmap.base64PNG;
             jlightmap.base64PNGLength = lightmap.base64PNGLength;
 
-            lightmaps.Add(jlightmap);        
+            lightmaps.Add(jlightmap);
         }
 
         return lightmaps;
-    }    
+    }
 
     static List<JELightmap> allLightmaps = new List<JELightmap>();
 

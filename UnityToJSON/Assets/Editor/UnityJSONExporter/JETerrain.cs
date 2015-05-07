@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ public class JETerrain : JEComponent
 
     override public void Preprocess()
     {
-        terrain = unityComponent as Terrain;        
+        terrain = unityComponent as Terrain;
         terrainData = terrain.terrainData;
     }
 
@@ -59,25 +61,25 @@ public class JETerrain : JEComponent
         var byteHeightArray = new byte[arrayHeight.Length * 4];
         Buffer.BlockCopy(arrayHeight, 0, byteHeightArray, 0, byteHeightArray.Length);
 
-        base64HeightLength = byteHeightArray.Length;   
+        base64HeightLength = byteHeightArray.Length;
         base64Height =  System.Convert.ToBase64String(byteHeightArray, 0, byteHeightArray.Length);
 
         var byteAlphaArray = new byte[arrayAlpha.Length * 4];
         Buffer.BlockCopy(arrayAlpha, 0, byteAlphaArray, 0, byteAlphaArray.Length);
 
-        base64AlphaLength = byteAlphaArray.Length;   
+        base64AlphaLength = byteAlphaArray.Length;
         base64Alpha =  System.Convert.ToBase64String(byteAlphaArray, 0, byteAlphaArray.Length);
 
 
-    }    
+    }
 
     override public void QueryResources()
     {
-    }    
+    }
 
     new public static void Reset()
     {
-        
+
     }
 
     public override JSONComponent ToJSON()
@@ -97,7 +99,7 @@ public class JETerrain : JEComponent
 
         json.base64Height = base64Height;
         json.base64HeightLength = base64HeightLength;
-        
+
 
         json.base64Alpha = base64Alpha;
         json.base64AlphaLength = base64AlphaLength;
@@ -124,4 +126,3 @@ public class JETerrain : JEComponent
 }
 
 }
-

@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +36,7 @@ public class JEGameObject : JEObject
         GameObjectLookup[go] = this;
         this.unityGameObject = go;
 
-        this.parent = parent;        
+        this.parent = parent;
         this.name = go.name;
 
         if (parent != null)
@@ -59,7 +62,7 @@ public class JEGameObject : JEObject
             component.QueryResources();
 
         foreach (var child in children)
-            child.QueryResources();        
+            child.QueryResources();
     }
 
     // process pass
@@ -69,7 +72,7 @@ public class JEGameObject : JEObject
             component.Process();
 
         foreach (var child in children)
-            child.Process();        
+            child.Process();
     }
 
     // final pass
@@ -79,7 +82,7 @@ public class JEGameObject : JEObject
             component.PostProcess();
 
         foreach (var child in children)
-            child.PostProcess();                
+            child.PostProcess();
     }
 
     public static void Reset()
@@ -104,7 +107,7 @@ public class JEGameObject : JEObject
         }
 
         return json;
-    }    
-}    
+    }
+}
 
 }

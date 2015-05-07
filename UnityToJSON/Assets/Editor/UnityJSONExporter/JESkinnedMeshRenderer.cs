@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -15,7 +17,7 @@ public class JESkinnedMeshRenderer : JEComponent
 
     override public void Preprocess()
     {
-        unityMeshRenderer = unityComponent as SkinnedMeshRenderer;        
+        unityMeshRenderer = unityComponent as SkinnedMeshRenderer;
 
     }
 
@@ -30,11 +32,11 @@ public class JESkinnedMeshRenderer : JEComponent
         {
             Materials.Add (JEMaterial.RegisterMaterial(unityMeshRenderer.sharedMaterials[i]));
         }
-    }    
+    }
 
     new public static void Reset()
     {
-        
+
     }
 
     public override JSONComponent ToJSON()
@@ -42,7 +44,7 @@ public class JESkinnedMeshRenderer : JEComponent
         var json = new JSONSkinnedMeshRenderer();
         json.type = "SkinnedMeshRenderer";
 
-        json.mesh = mesh.name;        
+        json.mesh = mesh.name;
         json.enabled = unityMeshRenderer.enabled;
         json.castShadows = unityMeshRenderer.castShadows;
         json.receiveShadows = unityMeshRenderer.receiveShadows;

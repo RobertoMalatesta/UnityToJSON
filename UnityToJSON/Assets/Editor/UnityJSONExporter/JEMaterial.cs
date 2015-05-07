@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -34,17 +36,17 @@ public class JEMaterial : JEResource
 
     void preprocess()
     {
-        //Debug.Log("preprocess - " + unityMaterial);        
-    }   
+        //Debug.Log("preprocess - " + unityMaterial);
+    }
 
     void process()
     {
-        //Debug.Log("process - " + unityMaterial);        
+        //Debug.Log("process - " + unityMaterial);
     }
 
     void postprocess()
     {
-        //Debug.Log("postprocess - " + unityMaterial);        
+        //Debug.Log("postprocess - " + unityMaterial);
     }
 
     new public static void Preprocess()
@@ -69,17 +71,17 @@ public class JEMaterial : JEResource
         foreach (var material in allMaterials.Values)
         {
             material.postprocess();
-        }        
+        }
     }
 
     new public static void Reset()
-    {        
-        allMaterials = new Dictionary<Material, JEMaterial >();        
-    }    
-
-    public static JEMaterial RegisterMaterial(Material material) 
     {
-        // we're trying to go off sharedMaterials, but we're getting 
+        allMaterials = new Dictionary<Material, JEMaterial >();
+    }
+
+    public static JEMaterial RegisterMaterial(Material material)
+    {
+        // we're trying to go off sharedMaterials, but we're getting
         // "instance" materials or something between meshes that share a material
         // so go off name for now
         foreach (Material m in allMaterials.Keys)
@@ -95,7 +97,7 @@ public class JEMaterial : JEResource
     {
         var json = new JSONMaterial();
 
-        json.name = name;    
+        json.name = name;
 
         json.shader = shader.name;
         json.mainTexture = texture == null ? "" : texture.name;
@@ -111,7 +113,7 @@ public class JEMaterial : JEResource
                 json.shaderKeywords[i] = unityMaterial.shaderKeywords[i];
         }
 
-        //json.color = unityMaterial.color;    
+        //json.color = unityMaterial.color;
 
         return json;
     }
@@ -128,8 +130,7 @@ public class JEMaterial : JEResource
 
     public static Dictionary<Material, JEMaterial> allMaterials;
 
-    
-}
 
 }
 
+}

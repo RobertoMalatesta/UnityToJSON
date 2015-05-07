@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
+
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -43,7 +46,7 @@ public class JEResource : JEObject
         JEMaterial.PostProcess();
         JELightmap.PostProcess();
         JEMesh.PostProcess();
-    }    
+    }
 
     public static JSONResources GenerateJSONResources()
     {
@@ -54,7 +57,7 @@ public class JEResource : JEObject
         json.shaders = JEShader.GenerateJSONShaderList();
         json.materials = JEMaterial.GenerateJSONMaterialList();
         json.meshes = JEMesh.GenerateJSONMeshList();
-        
+
         return json;
     }
 

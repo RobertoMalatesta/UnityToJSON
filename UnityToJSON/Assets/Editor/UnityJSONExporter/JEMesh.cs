@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System;
 using System.IO;
@@ -28,7 +30,7 @@ public class JEMesh : JEResource
 
         // we can have duplicates with same name, referenced by index
         //#name = mesh.name;
-        
+
         string path = AssetDatabase.GetAssetPath(mesh);
         path = Path.GetFileNameWithoutExtension(path);
         name = path + "_" + mesh.name;
@@ -36,8 +38,8 @@ public class JEMesh : JEResource
 
     void preprocess()
     {
-        
-    }   
+
+    }
 
     void process()
     {
@@ -73,7 +75,7 @@ public class JEMesh : JEResource
         }
     }
 
-    public static JEMesh RegisterMesh(Mesh mesh) 
+    public static JEMesh RegisterMesh(Mesh mesh)
     {
         if (allMeshes.ContainsKey(mesh))
         {
@@ -81,13 +83,13 @@ public class JEMesh : JEResource
         }
 
         return new JEMesh(mesh);
-    } 
+    }
 
     new public static void Reset()
     {
-        
+
     }
-    
+
     public new JSONMesh ToJSON()
     {
         var json = new JSONMesh();

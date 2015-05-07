@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2015, THUNDERBEAST GAMES LLC
+// Licensed under the MIT license, see LICENSE for details
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -15,7 +17,7 @@ public class JEMeshRenderer : JEComponent
 
     override public void Preprocess()
     {
-        unityMeshRenderer = unityComponent as MeshRenderer;        
+        unityMeshRenderer = unityComponent as MeshRenderer;
         unityMeshFilter = jeGameObject.unityGameObject.GetComponent<MeshFilter>();
 
         if (unityMeshFilter == null)
@@ -33,11 +35,11 @@ public class JEMeshRenderer : JEComponent
         {
             Materials.Add (JEMaterial.RegisterMaterial(unityMeshRenderer.sharedMaterials[i]));
         }
-    }    
+    }
 
     new public static void Reset()
     {
-        
+
     }
 
     public override JSONComponent ToJSON()
