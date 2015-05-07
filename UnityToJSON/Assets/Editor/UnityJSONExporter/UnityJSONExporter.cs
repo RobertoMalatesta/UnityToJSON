@@ -51,15 +51,26 @@ public class UnityJSONExporter : ScriptableObject
     public static void DoExport()
     {
 
-        var jsonScene = GenerateJSONScene();
+       var defaultFileName = Path.GetFileNameWithoutExtension(EditorApplication.currentScene) + ".json";
 
-        // move me
-        JsonConverter[] converters = new JsonConverter[]{new BasicTypeConverter()};
-        string json = JsonConvert.SerializeObject(jsonScene, Formatting.Indented, converters);
+        var path = EditorUtility.SaveFilePanel(
+      					"Export Scene to JSON",
+      					"",
+                defaultFileName,
+      					"json");
 
-        string filename = JEScene.sceneName + ".js";
+  			if (path.Length != 0)
+        {
 
-        System.IO.File.WriteAllText(@"/Users/josh/Desktop/" + filename, json);
+          var jsonScene = GenerateJSONScene();
+          JsonConverter[] converters = new JsonConverter[]{new BasicTypeConverter()};
+          string json = JsonConvert.SerializeObject(jsonScene, Formatting.Indented, converters);
+          System.IO.File.WriteAllText(path, json);
+
+          EditorUtility.DisplayDialog("UnityToJSON", "Export Successful", "OK");
+
+  			}
+
     }
 
 }
