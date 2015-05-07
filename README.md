@@ -20,15 +20,15 @@
  * Terrain
  * Cameras
 
-### Uses
+### Example Uses
 
 **JSON** is a standard and highly useful format for processing tasks.
 
-* Export to the [Atomic Game Engine](http://www.AtomicGameEngine.com/) which will support importing JSON natively in an upcoming release
+* Export to the [Atomic Game Engine](http://www.AtomicGameEngine.com/) (supports JSON import natively)
 
 * Export for use with renderers such as [Three.js](http://threejs.org/)
 
-* Tooling which analyzes scenes and reports model statistics, etc
+* Export to tooling which analyzes scenes and reports model statistics, etc
 
 
 ### Example JSON: Empty Scene
@@ -117,4 +117,5 @@ This is some sample output of the default empty Unity scene.  The entire scene i
       "children": []
     }
   ]
-}```
+}
+```
